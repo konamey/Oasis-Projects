@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://miro.medium.com/v2/resize:fit:759/0*P6KrWh4Fq1eKbFy8.'); /* Replace 'sachin-background.jpg' with your image file */
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+main {
+    padding: 20px;
+}
+
+.tribute-text {
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background for text */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background for footer */
+    padding: 10px;
+}

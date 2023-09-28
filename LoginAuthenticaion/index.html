@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Authentication System</title>
+</head>
+<body>
+    <h1>Login Authentication System</h1>
+    <div id="loginForm">
+        <h2>Login</h2>
+        <form id="login">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <button id="signupButton">Sign Up</button></p>
+    </div>
+    <div id="registerForm">
+        <h2>Register</h2>
+        <form id="register">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" required><br>
+            <label for="newPassword">Password:</label>
+            <input type="password" id="newPassword" required><br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <div id="message"></div>
+
+    <script>
+        // Simulated database of users
+        const users = [
+            { username: "user1", password: "password1" },
+            { username: "user2", password: "password2" },
+        ];
+
+        // Show the registration form when the "Sign Up" button is clicked
+        document.getElementById("signupButton").addEventListener("click", function () {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+        });
+
+        // Function to handle login
+        document.getElementById("login").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if user exists
+            const user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+                showMessage("Login successful!");
+            } else {
+                showMessage("Login failed. Please check your credentials.");
+            }
+        });
+
+        // Function to handle registration
+        document.getElementById("register").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const newUsername = document.getElementById("newUsername").value;
+            const newPassword = document.getElementById("newPassword").value;
+
+            // Check if the username is already taken
+            if (users.some(u => u.username === newUsername)) {
+                showMessage("Username already exists. Please choose another.");
+            } else {
+                // Add the new user to the database
+                users.push({ username: newUsername, password: newPassword });
+                showMessage("Registration successful! You can now log in.");
+                // Clear the registration form
+                document.getElementById("newUsername").value = "";
+                document.getElementById("newPassword").value = "";
+            }
+        });
+
+        // Function to display messages
+        function showMessage(message) {
+            const messageDiv = document.getElementById("message");
+            messageDiv.textContent = message;
+        }
+    </script>
+</body>
+</html>
